@@ -1,0 +1,59 @@
+{
+  "name": "prod_vs_local_vrt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "vrt": "playwright test",
+    "vrt:clean": "node scripts/clean-screenshots.js",
+    "vrt:local": "playwright test --project=local && playwright test --project=local-mobile",
+    "vrt:prod": "playwright test --project=production && playwright test --project=production-mobile",
+    "vrt:compare:local-vs-prod": "npm run vrt:clean && playwright test --project=production --project=production-mobile --update-snapshots && playwright test --project=local-vs-prod --project=local-vs-prod-mobile",
+    "vrt:update:local": "playwright test --project=local --update-snapshots && playwright test --project=local-mobile --update-snapshots",
+    "vrt:update:prod": "playwright test --project=production --update-snapshots && playwright test --project=production-mobile --update-snapshots",
+    "vrt:report": "node scripts/vrt-summary.ts && npx playwright show-report",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "fast-glob": "^3.3.3",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "acorn": "^8.14.1",
+    "acorn-walk": "^8.3.4",
+    "arg": "^4.1.3",
+    "braces": "^3.0.3",
+    "create-require": "^1.1.1",
+    "diff": "^4.0.2",
+    "fastq": "^1.19.1",
+    "fill-range": "^7.1.1",
+    "glob-parent": "^5.1.2",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "make-error": "^1.3.6",
+    "merge2": "^1.4.1",
+    "micromatch": "^4.0.8",
+    "picomatch": "^2.3.1",
+    "playwright": "^1.52.0",
+    "playwright-core": "^1.52.0",
+    "queue-microtask": "^1.2.3",
+    "reusify": "^1.1.0",
+    "run-parallel": "^1.2.0",
+    "to-regex-range": "^5.0.1",
+    "undici-types": "^6.21.0",
+    "v8-compile-cache-lib": "^3.0.1",
+    "yn": "^3.1.1"
+  },
+  "description": ""
+}
